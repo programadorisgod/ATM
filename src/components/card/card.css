@@ -1,0 +1,17 @@
+.rotate {
+  animation: rotar 2s ease-out forwards;
+}
+
+@keyframes rotar {
+  from {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+
+  to {
+    width: 20px;
+    height: 20px;
+    background-color: #1d4ed8;
+    transform: translateY(-7px) translateZ(-20px)  rotate3d(12, 2, -2, 70deg);
+  }
+}
+/*  */
