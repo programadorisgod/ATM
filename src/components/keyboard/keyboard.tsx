@@ -4,7 +4,7 @@ export default function KeyBoard() {
   const keyboard = key.map((key, index) => {
     return (
       <div
-        className="bg-white text-center text-pretty rounded-sm w-[30px] h-6 pr-2 pl-1"
+        className="bg-white text-center text-pretty rounded-sm w-[30px] h-6 cursor-pointer"
         key={index}
       >
         {key}
@@ -23,7 +23,7 @@ export default function KeyBoard() {
             : button === 'Cancel'
             ? 'bg-red-600'
             : 'bg-[#cfc8cf]'
-        } text-center text-pretty rounded-sm w-[82px] h-6 `}
+        } text-center text-pretty rounded-sm w-[82px] h-6 cursor-pointer `}
         key={index}
       >
         {button}
@@ -32,8 +32,8 @@ export default function KeyBoard() {
   })
 
   return (
-    <div className="bg-[#a69fa3] w-full h-32 flex justify-center items-center">
-      <div className="shadow-neo w-48 p-1 h-[115px] grid grid-cols-2 gap-4 bg-[#e0e0e0]">
+    <div className="bg-[#a69fa3] w-full h-32 flex justify-center items-center select-none">
+      <div className="shadow-neo w-48 p-1 h-[115px] grid grid-cols-[repeat(2,minmax(0,3fr))] gap-4 bg-[#e0e0e0]">
         <div className="grid grid-cols-3 gap-x-3 gap-y-1 ">{keyboard}</div>
         <div className="grid grid-cols-1 gap-1 ">{keyboardButtons}</div>
       </div>

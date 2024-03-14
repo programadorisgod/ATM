@@ -1,3 +1,4 @@
+import BankNoteSlot from './components/banknoteSlot/banknoteSlot'
 import CardSlot from './components/card/card'
 import KeyBoard from './components/keyboard/keyboard'
 import Screen from './components/screen/screen'
@@ -8,17 +9,23 @@ function App() {
 
       <main className="flex flex-col justify-center items-center h-screen">
         <section>
-          <div className="h-[600px] w-96 border-[19px] border-yellow-300 border-solid">
+          <div className="h-[600px] w-96 border-[19px] border-[#ffd44b] border-solid">
             <div className="h-full w-full border-[18px] border-solid border-[#7c6458]">
               <div className="h-full w-full bg-[#cfc8cf]">
                 <section className="bg-[#ab9d9f] w-full h-72 flex flex-col items-center">
                   <Screen />
                 </section>
+
                 <section>
                   <CardSlot />
                 </section>
+
                 <section>
                   <KeyBoard />
+                </section>
+
+                <section>
+                  <BankNoteSlot />
                 </section>
               </div>
             </div>
