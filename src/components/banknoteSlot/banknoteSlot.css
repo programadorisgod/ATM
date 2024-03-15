@@ -1,0 +1,15 @@
+.rotate_bank_note {
+  animation: rotate 600ms ease-out forwards;
+}
+
+@keyframes rotate {
+  from {
+    width: 20px;
+    height: 20px;
+    transform: translateY(-7px) translateZ(-20px) rotate3d(6, 6, -10, 30deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+}

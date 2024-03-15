@@ -1,16 +1,18 @@
 import { Alert } from 'flowbite-react/lib/esm/components/Alert'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { HiInformationCircle } from 'react-icons/hi'
-
+import { GlobalStateContext } from '../context/contextGlobal'
 type AlertComponentProps = {
   text: string
 }
 
 export default function AlertComponent({ text }: AlertComponentProps) {
   const [isVisible, setIsVisible] = useState<boolean>(true)
+  const { setGlobalState } = useContext(GlobalStateContext)
 
   const handleClick = () => {
     setIsVisible(!isVisible)
+    setGlobalState({ errorMessage: '', bankNotes: [] })
   }
 
   return (

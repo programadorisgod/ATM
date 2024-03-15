@@ -1,7 +1,13 @@
-type StepScreenProps = {
-  handleWithDraw: () => void
-}
+import { useContext } from 'react'
+import { StepScreenProps } from '../../types/screen'
+import { GlobalStateContext } from '../../context/contextGlobal'
+
 export default function StepScreen({ handleWithDraw }: StepScreenProps) {
+  const { setGlobalState } = useContext(GlobalStateContext)
+  const handleClick = () => {
+    setGlobalState({ errorMessage: '', bankNotes: [] })
+    handleWithDraw()
+  }
   return (
     <div className="h-[215px] w-full border-4 border-black rounded relative">
       <div className="w-full h-full bg-white">
@@ -13,7 +19,10 @@ export default function StepScreen({ handleWithDraw }: StepScreenProps) {
           />
         </picture>
       </div>
-      <button className=" bg-[#FED963] rounded-md  w-16 h-[25px]  absolute left-12 bottom-[1px]" onClick={() => handleWithDraw()}>
+      <button
+        className=" bg-[#FED963] rounded-md  w-16 h-[25px]  absolute left-12 bottom-[1px]"
+        onClick={handleClick}
+      >
         Retirar
       </button>
     </div>

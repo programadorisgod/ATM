@@ -1,10 +1,16 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useContext, useState } from 'react'
 import formatValue from '../../utils/formatValue'
 import DifferentWithdrawals from './differentWithdrawals'
+import withDraw from './withdrawal.service'
+import { GlobalStateContext } from '../../context/contextGlobal'
+import { StepScreenProps } from '../../types/screen'
 
-export default function WidthDrawalScreen() {
+
+
+export default function WidthDrawalScreen({ handleWithDraw }: StepScreenProps) {
   const [isDifferentWithDrawal, setIsDifferentWithDrawal] =
     useState<boolean>(false)
+  const { setGlobalState } = useContext(GlobalStateContext)
 
   const values: Array<number | string> = [
     10000,
@@ -20,6 +26,13 @@ export default function WidthDrawalScreen() {
   const handleAmountClick = (value: number | string) => {
     if (value === 'Otro monto') {
       setIsDifferentWithDrawal(true)
+      return
+    }
+
+    const bankNotes: Array<number> = withDraw(parseInt(value.toString()))
+    if (bankNotes.length) {
+      handleWithDraw()
+      setGlobalState({ bankNotes, errorMessage: '' })
     }
   }
   const inputValues: Array<ReactNode> = values.map((value, index) => {
@@ -43,7 +56,7 @@ export default function WidthDrawalScreen() {
       </header>
       <main>
         {isDifferentWithDrawal ? (
-          <DifferentWithdrawals />
+          <DifferentWithdrawals handleWithDraw={handleWithDraw} />
         ) : (
           <div className="grid grid-cols-2 gap-2 mt-6">{inputValues}</div>
         )}

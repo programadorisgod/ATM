@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react'
 import withDraw from './withdrawal.service'
-import { GlobalStateContext } from '../../context/contextError'
+import { GlobalStateContext } from '../../context/contextGlobal'
+import { StepScreenProps } from '../../types/screen'
 
-export default function DifferentWithdrawals() {
+export default function DifferentWithdrawals({
+  handleWithDraw,
+}: StepScreenProps) {
   const [inputValue, setInputValue] = useState<number>(10000)
   const { setGlobalState } = useContext(GlobalStateContext)
 
@@ -16,18 +19,25 @@ export default function DifferentWithdrawals() {
 
     if (inputValue < 10000 || inputValue > 2700000) {
       setGlobalState({
+        bankNotes: [],
         errorMessage: 'Por favor, ingrese un valor entre 10.000 y 2.700.000',
       })
+      return
     }
 
     if (inputValue % 10000 !== 0) {
       setGlobalState({
+        bankNotes: [],
         errorMessage:
           'Por favor, ingrese un valor múltiplo de 10.000. Recuerde que el cajero solo dispone de billetes de: 10.000, 20.000, 50.000 y 100.000',
       })
+      return
     }
 
-    withDraw(inputValue)
+    const bankNotes: Array<number> = withDraw(inputValue)
+
+    setGlobalState({ bankNotes, errorMessage: '' })
+    handleWithDraw()
   }
 
   return (

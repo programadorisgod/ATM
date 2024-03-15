@@ -8,3 +8,12 @@
 }
  */
 
+@media (width < 1228px) {
+  .bank_notes_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+}

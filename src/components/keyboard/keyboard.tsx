@@ -1,6 +1,11 @@
+import { useContext } from 'react'
+import { GlobalStateContext } from '../../context/contextGlobal'
+
 export default function KeyBoard() {
+  const { setGlobalState } = useContext(GlobalStateContext)
   const key: Array<number | string> = [1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0, '000']
   const buttons: Array<string> = ['Enter', 'Clear', '', 'Cancel']
+
   const keyboard = key.map((key, index) => {
     return (
       <div
@@ -15,6 +20,7 @@ export default function KeyBoard() {
   const keyboardButtons = buttons.map((button, index) => {
     return (
       <div
+        onClick={() => handleKey(button)}
         className={`${
           button === 'Enter'
             ? 'bg-green-600'
@@ -30,6 +36,12 @@ export default function KeyBoard() {
       </div>
     )
   })
+
+  const handleKey = (key: number | string) => {
+    if (key === 'Clear') {
+      setGlobalState({ errorMessage: '', bankNotes: [] })
+    }
+  }
 
   return (
     <div className="bg-[#a69fa3] w-full h-32 flex justify-center items-center select-none">

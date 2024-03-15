@@ -12,7 +12,7 @@ export default function Screen() {
   return (
     <div className="h-[220px] w-72 border-solid mt-12 bg-[#787174] rounded shadow-custom select-none">
       {withDraw ? (
-        <WidthDrawalScreen />
+        <WidthDrawalScreen handleWithDraw={handleWithDraw} />
       ) : (
         <StepScreen handleWithDraw={handleWithDraw} />
       )}

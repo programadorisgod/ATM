@@ -2,8 +2,11 @@
 import { ReactNode, createContext, useState } from 'react'
 
 export const GlobalStateContext = createContext({
-  globalState: { errorMessage: ''  },
-  setGlobalState: (value: { errorMessage: string }) => {},
+  globalState: { errorMessage: '', bankNotes: [0] },
+  setGlobalState: (value: {
+    errorMessage: string
+    bankNotes: Array<number>
+  }) => {},
 })
 
 type GlobalStateProviderProps = {
@@ -13,6 +16,7 @@ type GlobalStateProviderProps = {
 const GlobalStateProvider = ({ children }: GlobalStateProviderProps) => {
   const [globalState, setGlobalState] = useState({
     errorMessage: '',
+    bankNotes: [0],
   })
 
   return (
