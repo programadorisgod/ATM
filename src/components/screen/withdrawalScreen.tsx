@@ -28,7 +28,7 @@ export default function WidthDrawalScreen() {
         key={index}
         className={`${
           value === 'Otro monto' ? 'bg-slate-500' : 'bg-sky-500'
-        } w-38 pl-1 text-center pr-1 h-6  rounded-lg text-white`}
+        } w-38 pl-1 text-center pr-1 h-6  rounded-lg text-white cursor-pointer`}
         onClick={() => handleAmountClick(value)}
       >
         {formatValue(value)}

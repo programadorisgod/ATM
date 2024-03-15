@@ -8,6 +8,7 @@ export default function Screen() {
   const handleWithDraw = () => {
     setWithDraw(!withDraw)
   }
+
   return (
     <div className="h-[220px] w-72 border-solid mt-12 bg-[#787174] rounded shadow-custom select-none">
       {withDraw ? (
