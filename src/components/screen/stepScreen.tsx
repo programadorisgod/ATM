@@ -20,7 +20,7 @@ export default function StepScreen({ handleWithDraw }: StepScreenProps) {
         </picture>
       </div>
       <button
-        className=" bg-[#FED963] rounded-md  w-16 h-[25px]  absolute left-12 bottom-[1px]"
+        className="withdraw bg-[#FED963] rounded-md  w-16 h-[25px]  absolute left-12 bottom-[1px]"
         onClick={handleClick}
       >
         Retirar

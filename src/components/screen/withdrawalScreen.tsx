@@ -5,8 +5,6 @@ import withDraw from './withdrawal.service'
 import { GlobalStateContext } from '../../context/contextGlobal'
 import { StepScreenProps } from '../../types/screen'
 
-
-
 export default function WidthDrawalScreen({ handleWithDraw }: StepScreenProps) {
   const [isDifferentWithDrawal, setIsDifferentWithDrawal] =
     useState<boolean>(false)
@@ -41,7 +39,7 @@ export default function WidthDrawalScreen({ handleWithDraw }: StepScreenProps) {
         key={index}
         className={`${
           value === 'Otro monto' ? 'bg-slate-500' : 'bg-sky-500'
-        } w-38 pl-1 text-center pr-1 h-6  rounded-lg text-white cursor-pointer`}
+        } w-38 pl-1 text-center pr-1 h-6  rounded-lg text-white cursor-pointer button_amount`}
         onClick={() => handleAmountClick(value)}
       >
         {formatValue(value)}
@@ -50,7 +48,7 @@ export default function WidthDrawalScreen({ handleWithDraw }: StepScreenProps) {
   })
 
   return (
-    <section className="flex flex-col items-center bg-slate-50 h-[215px] rounded-sm">
+    <section className="flex flex-col items-center bg-slate-50 h-[215px] rounded-sm amounts">
       <header>
         <h3 className="text-2xl font-bold mt-2">Monto a retirar</h3>
       </header>

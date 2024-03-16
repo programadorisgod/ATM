@@ -19,7 +19,7 @@ export default function CardSlot() {
       </div>
       <div className="bg-[#787174] w-44 h-10 flex justify-center items-center gap-2">
         <div className="w-14 h-2 border-2 border-stone-300 border-solid shadow-card "></div>
-        <picture className="cursor-pointer" onClick={handleCard}>
+        <picture className="cursor-pointer card_slot" onClick={handleCard}>
           <img width={18} src={cardSvg} alt="Card" />
         </picture>
       </div>

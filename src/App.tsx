@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { ShepherdTour } from 'react-shepherd'
 import BankNoteSlot from './components/banknoteSlot/banknoteSlot'
 import CardSlot from './components/card/card'
 import KeyBoard from './components/keyboard/keyboard'
@@ -7,8 +8,12 @@ import AlertComponent from './share/alert'
 import { GlobalStateContext } from './context/contextGlobal'
 import BankNotes from './share/bankNotes'
 import './App.css'
+import steps from './utils/step'
+import { tourOptions } from './utils/tourOptions'
+import Guide from './utils/guide'
 function App() {
   const { globalState } = useContext(GlobalStateContext)
+
   return (
     <>
       <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"></div>
@@ -17,6 +22,9 @@ function App() {
           <AlertComponent text={globalState.errorMessage} />
         )}
         <div className="bank_notes_container flex justify-center items-center gap-4">
+          <ShepherdTour steps={steps} tourOptions={tourOptions}>
+            <Guide />
+          </ShepherdTour>
           <section>
             <div className="h-[600px] w-96 border-[19px] border-[#ffd44b] border-solid">
               <div className="h-full w-full border-[18px] border-solid border-[#7c6458]">
