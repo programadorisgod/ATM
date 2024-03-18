@@ -3,7 +3,7 @@ import { ReactNode, createContext, useState } from 'react'
 
 export const GlobalStateContext = createContext({
   globalState: { errorMessage: '', bankNotes: [0] },
-  setGlobalState: (value: {
+  setGlobalState: (_value: {
     errorMessage: string
     bankNotes: Array<number>
   }) => {},
