@@ -10,11 +10,11 @@ export default function BankNotes({ bankNotes }: { bankNotes: Array<number> }) {
         <>
           <picture key={index} className="w-full">
             <source
-              srcSet={`../../src/assets/${bankNotesNumber[index]}.webp" type="image/wepb`}
+              srcSet={`/assets/${bankNotesNumber[index]}.webp" type="image/wepb`}
             />
             <img
               className="w-ful h-full"
-              src={`../../src/assets/${bankNotesNumber[index]}.jpg`}
+              src={`/assets/${bankNotesNumber[index]}.jpg`}
               alt="imagen billete"
             />
           </picture>

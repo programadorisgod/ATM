@@ -14,7 +14,7 @@ export default function StepScreen({ handleWithDraw }: StepScreenProps) {
         <picture>
           <img
             className="object-contain w-full h-full "
-            src="../../../src/assets/retirar.webp"
+            src="/assets/retirar.webp"
             alt="imagen de pasos a seguir para retirar"
           />
         </picture>
