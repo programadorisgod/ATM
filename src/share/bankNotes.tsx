@@ -1,4 +1,4 @@
-import formatBankNotes from "../utils/fortmatBankNotes"
+import formatBankNotes from '../utils/fortmatBankNotes'
 
 export default function BankNotes({ bankNotes }: { bankNotes: Array<number> }) {
   const bankNotesNumber: Array<string> = ['10k', '20k', '50k', '100k']
@@ -10,15 +10,17 @@ export default function BankNotes({ bankNotes }: { bankNotes: Array<number> }) {
         <>
           <picture key={index} className="w-full">
             <source
-              srcSet={`/assets/${bankNotesNumber[index]}.webp" type="image/wepb`}
+              srcSet={`../../src/assets/${bankNotesNumber[index]}.webp" type="image/wepb`}
             />
             <img
               className="w-ful h-full"
-              src={`src/assets/${bankNotesNumber[index]}.jpg`}
+              src={`../../src/assets/${bankNotesNumber[index]}.jpg`}
               alt="imagen billete"
             />
           </picture>
-          <span className="font-bold">({formatBankNotes(bankNotes[index])})</span>
+          <span className="font-bold">
+            ({formatBankNotes(bankNotes[index])})
+          </span>
         </>
       )
     )
