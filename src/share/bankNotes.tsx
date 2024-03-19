@@ -8,14 +8,26 @@ export default function BankNotes({ bankNotes }: { bankNotes: Array<number> }) {
   )
 
   const [imageUrls, setImageUrls] = useState<string[]>([])
+  const [imageLoaded, setImageLoaded] = useState<boolean[]>([])
 
   useEffect(() => {
     Promise.all(
       bankNotesNumber.map((note) =>
         import(`../assets/${note}.jpg`).then((image) => image.default)
       )
-    ).then(setImageUrls)
+    ).then((urls) => {
+      setImageUrls(urls)
+      setImageLoaded(new Array(urls.length).fill(false))
+    })
   }, [bankNotesNumber])
+
+  const handleImageLoaded = (index: number) => {
+    setImageLoaded((prevState) => {
+      const newState = [...prevState]
+      newState[index] = true
+      return newState
+    })
+  }
 
   const bankNotesImages = bankNotes.map((bankNote: number, index: number) => {
     return (
@@ -26,9 +38,11 @@ export default function BankNotes({ bankNotes }: { bankNotes: Array<number> }) {
               srcSet={`/src/assets/${bankNotesNumber[index]}.webp" type="image/wepb`}
             />
             <img
+              loading="lazy"
               className="w-ful h-full"
               src={imageUrls[index]}
-              alt="imagen billete"
+              alt={imageLoaded[index] ? 'imagen billete' : ''}
+              onLoad={() => handleImageLoaded(index)}
             />
           </picture>
           <span className="font-bold">
