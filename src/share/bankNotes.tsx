@@ -8,26 +8,15 @@ export default function BankNotes({ bankNotes }: { bankNotes: Array<number> }) {
   )
 
   const [imageUrls, setImageUrls] = useState<string[]>([])
-  const [imageLoaded, setImageLoaded] = useState<boolean[]>([])
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     Promise.all(
       bankNotesNumber.map((note) =>
         import(`../assets/${note}.jpg`).then((image) => image.default)
       )
-    ).then((urls) => {
-      setImageUrls(urls)
-      setImageLoaded(new Array(urls.length).fill(false))
-    })
+    ).then(setImageUrls)
   }, [bankNotesNumber])
-
-  const handleImageLoaded = (index: number) => {
-    setImageLoaded((prevState) => {
-      const newState = [...prevState]
-      newState[index] = true
-      return newState
-    })
-  }
 
   const bankNotesImages = bankNotes.map((bankNote: number, index: number) => {
     return (
@@ -41,8 +30,8 @@ export default function BankNotes({ bankNotes }: { bankNotes: Array<number> }) {
               loading="lazy"
               className="w-ful h-full"
               src={imageUrls[index]}
-              alt={imageLoaded[index] ? 'imagen billete' : ''}
-              onLoad={() => handleImageLoaded(index)}
+              alt={imageLoaded ? 'imagen billete' : ''}
+              onLoad={() => setImageLoaded(true)}
             />
           </picture>
           <span className="font-bold">
