@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { StepScreenProps } from '../../types/screen'
 import { GlobalStateContext } from '../../context/contextGlobal'
-
+import retirarImage from '../../assets/retirar.webp'
 export default function StepScreen({ handleWithDraw }: StepScreenProps) {
   const { setGlobalState } = useContext(GlobalStateContext)
   const handleClick = () => {
@@ -14,7 +14,7 @@ export default function StepScreen({ handleWithDraw }: StepScreenProps) {
         <picture>
           <img
             className="object-contain w-full h-full "
-            src="src/assets/retirar.webp"
+            src={retirarImage}
             alt="imagen de pasos a seguir para retirar"
           />
         </picture>
